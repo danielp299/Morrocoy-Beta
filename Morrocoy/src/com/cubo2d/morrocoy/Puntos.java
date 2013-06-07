@@ -16,7 +16,7 @@ public class Puntos extends Enemy{
 	
 
 	public Puntos(float x, float y) {
-		super(x, y);
+		super(x, y,4,6);
 		// TODO Auto-generated constructor stub
 		setWidth(Assets.escala);
 		setHeight(Assets.escala);

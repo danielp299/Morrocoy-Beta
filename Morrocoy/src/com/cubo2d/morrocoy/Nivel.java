@@ -27,6 +27,10 @@ public class Nivel {
 	/*total de comida del nivel no varia*/
 	public float comida;
 	
+	public float velocidadEnemigoMax;
+	
+	public float velocidadEnemigoMin;
+	
 	public float velocidad;
 	
 	public float tipoPoder;
@@ -35,6 +39,8 @@ public class Nivel {
 	
 	public Nivel() {
 		// TODO Auto-generated constructor stub
+		velocidadEnemigoMax = 6;
+		velocidadEnemigoMin = 4;
 	}
 	
 	public Texture getBackground(){
@@ -97,20 +103,85 @@ public class Nivel {
 			defensa = 40;
 			comida = 10;
 			velocidad = 5;
+			velocidadEnemigoMax = 5;
+			velocidadEnemigoMin = 3.5f;
 			break;
 		case 5:
 			distancia = 1100;
 			puntos = 50;
 			frecuenciaEnemigos = 29;
-			frecuenciaBonus = 60;
+			frecuenciaBonus = 80;
 			frecuenciaPuntos = (distancia-100)/puntos ;
 			enemigo_solo = 50;
-			enemigo_doble =40;
-			rapido = 40;
-			defensa = 40;
+			enemigo_doble =25;
+			rapido = 20;
+			defensa = 60;
 			comida = 20;
 			velocidad = 5;
+			velocidadEnemigoMax = 5;
+			velocidadEnemigoMin = 3.2f;
 			break;
+		case 6:
+			distancia = 600;
+			puntos = 50;
+			frecuenciaEnemigos =22;
+			frecuenciaBonus = 70;
+			frecuenciaPuntos = (distancia-100)/puntos ;
+			enemigo_solo = 50;
+			enemigo_doble =25;
+			rapido = 40;
+			defensa = 20;
+			comida = 5;
+			velocidad = 5;
+			velocidadEnemigoMax = 5;
+			velocidadEnemigoMin = 3.2f;
+			break;
+		case 7:
+			distancia = 1200;
+			puntos = 80;
+			frecuenciaEnemigos = 25;
+			frecuenciaBonus = 110;
+			frecuenciaPuntos = (distancia-100)/puntos ;
+			enemigo_solo = 50;
+			enemigo_doble =30;
+			rapido = 30;
+			defensa = 20;
+			comida = 20;
+			velocidad = 6;
+			velocidadEnemigoMax = 5;
+			velocidadEnemigoMin = 3.2f;
+			break;
+		case 8:
+			distancia = 1250;
+			puntos = 50;
+			frecuenciaEnemigos = 20;
+			frecuenciaBonus = 150;
+			frecuenciaPuntos = (distancia-100)/puntos ;
+			enemigo_solo = 50;
+			enemigo_doble =10;
+			rapido = 40;
+			defensa = 60;
+			comida = 40;
+			velocidad = 6;
+			velocidadEnemigoMax = 5;
+			velocidadEnemigoMin = 3.2f;
+			break;
+		case 9:
+			distancia = 1100;
+			puntos = 50;
+			frecuenciaEnemigos = 20;
+			frecuenciaBonus = 200;
+			frecuenciaPuntos = (distancia-100)/puntos ;
+			enemigo_solo = 50;
+			enemigo_doble =50;
+			rapido = 50;
+			defensa = 60;
+			comida = 2;
+			velocidad = 5;
+			velocidadEnemigoMax = 4.5f;
+			velocidadEnemigoMin = 3f;
+			break;
+		
 
 		default:
 			distancia = 500;

@@ -13,25 +13,32 @@ public class Enemy extends Actor {
 	private Rectangle bounds = new Rectangle();
 	float stateTime;
 	
-	public Enemy(float x, float y) {
+	
+	
+	
+	public Enemy(float x, float y, float max, float min) {
 		setWidth(Assets.escala*2);
 		setHeight(Assets.escala);
 		setPosition(x, y - getHeight()/2);
 
-		int rnd = MathUtils.random(0, 3);
-		if (rnd == 0) setColor(Color.RED);
-		if (rnd == 1) setColor(Color.GREEN);
-		if (rnd == 2) setColor(Color.YELLOW);
-		if (rnd == 3) setColor(Color.BLUE);
+		int rnd = MathUtils.random(0, 4);
+		if (rnd == 0) setColor(new Color(0.992157f, 0.960784f, 0.901961f,1));
+		if (rnd == 1) setColor(new Color(1f, 0.960784f, 0.951961f,1));
+		if (rnd == 2) setColor(new Color(0.85f, 0.960784f, 1f,1));
+		if (rnd == 3) setColor(new Color(0.91f, 0.980784f, 0.911961f,1));
+		if (rnd == 4) setColor(new Color(0.46f, 0.56f, 0.66f,1));
 		
-		addAction(moveTo(-getWidth(), getY(), MathUtils.random(4.0f, 6.0f)));
+		addAction(moveTo(-getWidth(), getY(), MathUtils.random(min, max)));
 	}
+	
+	
 	
 	@Override
 	public void act(float delta){
 		super.act(delta);
 		updateBounds();
 	}
+	
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {

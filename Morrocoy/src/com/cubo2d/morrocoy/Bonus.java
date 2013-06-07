@@ -9,11 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Bonus extends Enemy{
 	private int tipo;
 	private int index;
+	float stateTime;
 	
 	public boolean esActivo = false;
 
 	public Bonus(float x, float y, int _tipo) {
-		super(x, y);
+		super(x, y,3,6);
 		// TODO Auto-generated constructor stub
 		tipo = _tipo;
 	
@@ -21,6 +22,7 @@ public class Bonus extends Enemy{
 
 		esActivo = false;
 		index = -1;
+		stateTime =0;
 
 	}
 	
@@ -34,29 +36,34 @@ public class Bonus extends Enemy{
 		if(tipo == 0){
 
 			if(esActivo){
-				batch.draw(Assets.defensa, getX(), getY(), getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1, 1, getRotation());			
+				batch.draw(Assets.defensaCamina.getKeyFrame(stateTime), getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), Assets.escala, 1, 1, getRotation());			
 			}else{
 				batch.draw(Assets.defensa_icono, getX(), getY(), getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1, 1, getRotation());			
 				}
 			}else if(tipo == 1){
 				if(esActivo){
-					batch.draw(Assets.comida, getX(), getY(), getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1, 1, getRotation());			
+					batch.draw(Assets.comidaCamina.getKeyFrame(stateTime), getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), Assets.escala, 1, 1, getRotation());			
 				}else{
 					batch.draw(Assets.comida_icono, getX(), getY(), getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1, 1, getRotation());			
 					} 
 			}else if(tipo == 2){
 				if(esActivo){
-					batch.draw(Assets.rapido, getX()-50, getY()-20, getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1f, 2.5f, 270);			
-					
+					batch.draw(Assets.rapidoCamina.getKeyFrame(stateTime), getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), Assets.escala, 1f, 1.5f,  getRotation());			
 					
 				}else{
-					batch.draw(Assets.rapido_icono, getX(), getY(), getWidth()/2, getHeight()/2, Assets.escala, Assets.escala, 1, 1, getRotation());			
+					batch.draw(Assets.rapido_icono, getX(), getY(), getWidth()/2, getHeight()/2,Assets.escala , Assets.escala, 1, 1, getRotation());			
 					}
 			}
 
 		
 		//Assets.font.draw(batch,""+index, getX(), getY());
 	}
+	
+	public void setStateTime(float st){
+		
+		stateTime = st;
+	}
+
 	
 	public void crash(int posicion) {
 		clearActions();

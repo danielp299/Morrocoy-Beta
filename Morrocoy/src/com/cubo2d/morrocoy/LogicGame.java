@@ -242,6 +242,8 @@ public class LogicGame extends Table {
 		}else{
 			GanoNivel();
 		}
+		
+		
 	}
 
 	private void spawnCar() {
@@ -258,7 +260,7 @@ public class LogicGame extends Table {
 				if (linea == 1) yPos = lane1;
 				if (linea == 2) yPos = lane2;
 				
-				enemyCar = new Enemy(getWidth(), yPos);
+				enemyCar = new Enemy(getWidth(), yPos,nivel.velocidadEnemigoMax,nivel.velocidadEnemigoMin);
 				enemyCars.add(enemyCar);
 				addActor(enemyCar);
 				lineasUsadas = linea;
@@ -270,7 +272,7 @@ public class LogicGame extends Table {
 				if (linea == 1) yPos = lane1;
 				if (linea == 2) yPos = lane2;
 				
-				enemyCar = new Enemy(getWidth(), yPos);
+				enemyCar = new Enemy(getWidth(), yPos,nivel.velocidadEnemigoMax,nivel.velocidadEnemigoMin);
 				enemyCars.add(enemyCar);
 				addActor(enemyCar);
 				break;
@@ -282,7 +284,7 @@ public class LogicGame extends Table {
 				if (linea == 1) yPos = lane1;
 				if (linea == 2) yPos = lane2;
 				
-				enemyCar = new Enemy(getWidth(), yPos);
+				enemyCar = new Enemy(getWidth(), yPos,nivel.velocidadEnemigoMax,nivel.velocidadEnemigoMin);
 				enemyCars.add(enemyCar);
 				addActor(enemyCar);
 				lineasUsadas = linea;

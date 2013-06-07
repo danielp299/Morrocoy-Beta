@@ -41,6 +41,9 @@ public class Assets {
 	
 	//animacion
 	public static Animation tortugaCamina;
+	public static Animation defensaCamina;
+	public static Animation comidaCamina;
+	public static Animation rapidoCamina;
 	public static Animation conejoCamina;
 
 	public static float velocidad_global = 1f;
@@ -54,7 +57,7 @@ public class Assets {
 	public static void load() {
 		atlas = new TextureAtlas(Gdx.files.internal("empaquetado.txt"));
 		//car = atlas.findRegion("t0005");
-		road = atlas.findRegion("road");
+		road = atlas.findRegion("piso_tierra");
 		bonus_boton = atlas.findRegion("espacio_poder");
 		poder = atlas.findRegion("poder");
 		rapido_icono = atlas.findRegion("rapido_icono");
@@ -84,6 +87,37 @@ public class Assets {
 		car = atlas.findRegion("c0005");
 		arrayT.add(car);
 		conejoCamina = new Animation(0.15f, arrayT, Animation.LOOP_PINGPONG);
+		
+		arrayT.clear();
+		car = atlas.findRegion("co0001");
+		arrayT.add(car);
+		car = atlas.findRegion("co0003");
+		arrayT.add(car);
+		car = atlas.findRegion("co0005");
+		arrayT.add(car);
+		comidaCamina = new Animation(0.10f, arrayT, Animation.LOOP_PINGPONG);
+		
+		arrayT.clear();
+		car = atlas.findRegion("d0001");
+		arrayT.add(car);
+		car = atlas.findRegion("d0003");
+		arrayT.add(car);
+		car = atlas.findRegion("d0005");
+		arrayT.add(car);
+		defensaCamina = new Animation(0.10f, arrayT, Animation.LOOP_PINGPONG);
+		
+		arrayT.clear();
+		car = atlas.findRegion("r0002");
+		arrayT.add(car);
+		car = atlas.findRegion("r0004");
+		arrayT.add(car);
+		car = atlas.findRegion("r0006");
+		arrayT.add(car);
+		car = atlas.findRegion("r0008");
+		arrayT.add(car);
+		car = atlas.findRegion("r0010");
+		arrayT.add(car);
+		rapidoCamina = new Animation(0.10f, arrayT, Animation.LOOP_PINGPONG);
 		
 		//fuente
 		font.setScale(0.5f);

@@ -27,7 +27,7 @@ public class Player extends Actor {
 	//private boolean fantasma = false;
 	private float activacionDeInmortal;
 	private boolean ocupado[] = new boolean[3]; 
-	float stateTime; 
+	private float stateTime; 
 	public boolean activo;
 	
 	
@@ -38,8 +38,8 @@ public class Player extends Actor {
 	}
 	
 	public void nuevo(){
-		setWidth(160);
-		setHeight(85);
+		setWidth(Assets.escala+(Assets.escala/2));
+		setHeight(Assets.escala);
 		lane = 1;
 		setPosition(100, trafficGame.lane1 - getHeight()/2);
 		setColor(Color.WHITE);
@@ -103,6 +103,7 @@ public class Player extends Actor {
 				if (BonusActual.isVisible()) {
 					//BonusActual.setX(getX());
 					BonusActual.setY(getY());
+					BonusActual.setStateTime(stateTime);
 				}else{
 					iterB.remove();
 					trafficGame.removeActor(BonusActual);
@@ -121,6 +122,7 @@ public class Player extends Actor {
 					if(BonusActual.getindex() == 2){
 						ocupado[2] = true;
 					}
+					
 				}
 			
 		}
@@ -174,7 +176,8 @@ public class Player extends Actor {
 				if (BonusActual.getBounds().overlaps(new Rectangle(x,y,1,1))) {					
 					BonusActual.ActivarBonus();
 					BonusActual.BonusActivo();
-					BonusActual.setX(getX());
+					BonusActual.setBounds(getX(), getY(), getWidth(), getHeight());
+					BonusActual.setRotation(0);
 					if(BonusActual.getTipo() == 2){
 						trafficGame.Rapido();
 					}else if(BonusActual.getTipo() == 0){
@@ -266,5 +269,10 @@ public class Player extends Actor {
 	
 	public int getPuntos(){
 		return puntos;
+	}
+	
+	public float getEstateTime(){
+		
+		return stateTime;
 	}
 }

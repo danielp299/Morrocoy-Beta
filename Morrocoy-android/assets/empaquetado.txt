@@ -2,122 +2,178 @@ empaquetado.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-defensa
+t0003
   rotate: false
-  xy: 358, 180
-  size: 239, 128
-  orig: 239, 128
+  xy: 509, 758
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-cura
+d0005
   rotate: false
-  xy: 153, 180
-  size: 205, 92
-  orig: 205, 92
+  xy: 861, 254
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-espacio_poder
+d0001
   rotate: false
-  xy: 750, 180
-  size: 118, 118
-  orig: 118, 118
+  xy: 157, 254
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-aaa
+co0001
   rotate: false
-  xy: 0, 0
-  size: 200, 50
-  orig: 200, 50
+  xy: 960, 2
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-rapido
+co0005
   rotate: false
-  xy: 390, 333
-  size: 168, 65
-  orig: 168, 65
+  xy: 1664, 2
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-t0001
+piso_tierra
   rotate: false
-  xy: 0, 526
-  size: 250, 180
-  orig: 250, 180
-  offset: 0, 0
-  index: -1
-defensa_icono
-  rotate: false
-  xy: 597, 180
-  size: 153, 153
-  orig: 153, 153
-  offset: 0, 0
-  index: -1
-road
-  rotate: false
-  xy: 711, 333
+  xy: 1690, 254
   size: 200, 100
   orig: 200, 100
   offset: 0, 0
   index: -1
-t0003
+puntos
   rotate: false
-  xy: 250, 526
-  size: 250, 180
-  orig: 250, 180
+  xy: 2, 506
+  size: 190, 193
+  orig: 190, 193
   offset: 0, 0
   index: -1
-c0001
+r0006
   rotate: false
-  xy: 200, 0
+  xy: 898, 506
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+r0002
+  rotate: false
+  xy: 194, 506
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+c0003
+  rotate: false
+  xy: 456, 2
   size: 250, 180
   orig: 250, 180
   offset: 0, 0
   index: -1
 comida_icono
   rotate: false
-  xy: 0, 180
-  size: 153, 153
-  orig: 153, 153
-  offset: 0, 0
-  index: -1
-rapido_icono
-  rotate: false
-  xy: 558, 333
+  xy: 2, 254
   size: 153, 153
   orig: 153, 153
   offset: 0, 0
   index: -1
 t0005
   rotate: false
-  xy: 500, 526
-  size: 250, 180
-  orig: 250, 180
+  xy: 861, 758
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
-c0003
+t0001
   rotate: false
-  xy: 450, 0
-  size: 250, 180
-  orig: 250, 180
+  xy: 157, 758
+  size: 350, 250
+  orig: 350, 250
   offset: 0, 0
   index: -1
 grama
   rotate: false
-  xy: 0, 333
+  xy: 1488, 254
   size: 200, 40
   orig: 200, 40
   offset: 0, 0
   index: -1
+d0003
+  rotate: false
+  xy: 509, 254
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+co0003
+  rotate: false
+  xy: 1312, 2
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+aaa
+  rotate: false
+  xy: 2, 2
+  size: 200, 50
+  orig: 200, 50
+  offset: 0, 0
+  index: -1
+espacio_poder
+  rotate: false
+  xy: 1368, 254
+  size: 118, 118
+  orig: 118, 118
+  offset: 0, 0
+  index: -1
+r0010
+  rotate: false
+  xy: 1602, 506
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+r0008
+  rotate: false
+  xy: 1250, 506
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+defensa_icono
+  rotate: false
+  xy: 1213, 254
+  size: 153, 153
+  orig: 153, 153
+  offset: 0, 0
+  index: -1
 c0005
   rotate: false
-  xy: 700, 0
+  xy: 708, 2
   size: 250, 180
   orig: 250, 180
   offset: 0, 0
   index: -1
-puntos
+r0004
   rotate: false
-  xy: 200, 333
-  size: 190, 193
-  orig: 190, 193
+  xy: 546, 506
+  size: 350, 250
+  orig: 350, 250
+  offset: 0, 0
+  index: -1
+c0001
+  rotate: false
+  xy: 204, 2
+  size: 250, 180
+  orig: 250, 180
+  offset: 0, 0
+  index: -1
+rapido_icono
+  rotate: false
+  xy: 2, 758
+  size: 153, 153
+  orig: 153, 153
   offset: 0, 0
   index: -1
