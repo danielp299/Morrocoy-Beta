@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
@@ -29,22 +30,29 @@ public class Player extends Actor {
 	private boolean ocupado[] = new boolean[3]; 
 	private float stateTime; 
 	public boolean activo;
+	Table poderes;
 	
 	
 	public Player(LogicGame trafficGame) {
 		this.trafficGame = trafficGame;
+		
 		bonusArray = new Array<Bonus>();
+		
+		
 		nuevo();
 	}
 	
 	public void nuevo(){
+		clearActions();
 		setWidth(Assets.escala+(Assets.escala/2));
 		setHeight(Assets.escala);
 		lane = 1;
-		setPosition(100, trafficGame.lane1 - getHeight()/2);
+		puntos = 0;
+		setPosition(Assets.escala+Assets.escala/2, trafficGame.lane1 - getHeight()/2);
 		setColor(Color.WHITE);
 		velocidad = Assets.velocidad_global;
 		vidas = 3;
+		setRotation(0);
 		
 		Iterator<Bonus> iterB = bonusArray.iterator();
 		
@@ -59,6 +67,7 @@ public class Player extends Actor {
 	@Override
 	public void act(float delta){
 		super.act(delta);
+		stateTime+= Gdx.graphics.getDeltaTime();
 		updateBounds();
 		finInmortal();
 	}
@@ -72,23 +81,20 @@ public class Player extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
-		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);		
-		if(activo)
-		stateTime+= Gdx.graphics.getDeltaTime();
+		//batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);		
+		if(activo){
+		//batch.set
 		batch.draw(Assets.tortugaCamina.getKeyFrame(stateTime), getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), getHeight(), 1, 1, getRotation());
+		}else{
+			
+		}
+		//batch.draw(Assets.bonus_boton, 0, 0 ,Assets.escala,Assets.escala);
+		//batch.draw(Assets.bonus_boton, Assets.escala, 0,Assets.escala,Assets.escala);
+		//batch.draw(Assets.bonus_boton, Assets.escala * 2, 0,Assets.escala,Assets.escala);
+		batch.draw(Assets.bonus_boton,Gdx.graphics.getWidth()- Assets.escala, 0 ,Assets.escala,Assets.escala);
+		batch.draw(Assets.bonus_boton,Gdx.graphics.getWidth()- Assets.escala*2, 0,Assets.escala,Assets.escala);
+		batch.draw(Assets.bonus_boton,Gdx.graphics.getWidth()- Assets.escala*3, 0,Assets.escala,Assets.escala);
 		
-		batch.draw(Assets.bonus_boton, 0, 0 ,Assets.escala,Assets.escala);
-		batch.draw(Assets.bonus_boton, Assets.bonus_boton.getRegionWidth(), 0,Assets.escala,Assets.escala);
-		batch.draw(Assets.bonus_boton, Assets.bonus_boton.getRegionWidth() * 2, 0,Assets.escala,Assets.escala);
-
-	
-		
-        
-
-        //informacion
-        Assets.font.draw(batch, "Puntos: "+puntos+"", Gdx.graphics.getWidth()-Assets.escala, Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/20);
-        Assets.font.draw(batch, "Vidas: ["+vidas+"]" + "FPS" + Gdx.graphics.getFramesPerSecond(), 0 , Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/20);
-       
         
 	}
 	
@@ -168,11 +174,7 @@ public class Player extends Actor {
 			Iterator<Bonus> iterB = bonusArray.iterator();
 			while (iterB.hasNext()) {
 				Bonus BonusActual = iterB.next();
-				if (BonusActual.getBounds().x + BonusActual.getWidth() <= 0) {
-					iterB.remove();
-					trafficGame.removeActor(BonusActual);
-					
-				}
+				
 				if (BonusActual.getBounds().overlaps(new Rectangle(x,y,1,1))) {					
 					BonusActual.ActivarBonus();
 					BonusActual.BonusActivo();
@@ -203,6 +205,7 @@ public class Player extends Actor {
 		if(!inmortal){
 			if(vidas > 0){
 				vidas--;
+				trafficGame.corazon.perderCorazon(getX()+getWidth()/2, getY());
 			}
 			if(vidas == 0){
 				clearActions();
@@ -216,6 +219,7 @@ public class Player extends Actor {
 	public void ganarVida(){
 		if(vidas < 3){
 		vidas ++;	
+		trafficGame.corazon.ganarCorazon(getX()+getWidth()/2, getY());
 		}
 	}
 	
@@ -225,14 +229,14 @@ public class Player extends Actor {
 			return true;
 		}
 		return false;
-		
+	}
+	
+	public int getVidas(){
+		return vidas;
 	}
 	
 	public void agregarPoder(Bonus poder){
 		if(cont_pasivos < 3){
-		if(poder.getTipo() == 1){
-			//ganarVida();
-			}
 		poder.setHeight(Assets.escala);
 		poder.setWidth(Assets.escala);
 		bonusArray.add(poder);
@@ -240,7 +244,6 @@ public class Player extends Actor {
 		
 	}
 
-	
 	public int numeroPoderes(){
 		if(cont_pasivos > 2){
 			return 3;
@@ -264,7 +267,7 @@ public class Player extends Actor {
 	}
 	
 	public Rectangle getBounds() {
-		return bounds;
+		return new Rectangle(getX(), getY(), getWidth()-Assets.escala/4, getHeight());
 	}
 	
 	public int getPuntos(){
@@ -274,5 +277,13 @@ public class Player extends Actor {
 	public float getEstateTime(){
 		
 		return stateTime;
+	}
+	
+	public void borrarBonus(){
+		Iterator<Bonus> iterB = bonusArray.iterator();
+		while (iterB.hasNext()) {
+			Bonus BonusActual = iterB.next();
+			BonusActual.setVisible(false);
+		}
 	}
 }

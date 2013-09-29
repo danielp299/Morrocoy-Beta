@@ -8,9 +8,22 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Morrocoy";
 		cfg.useGL20 = false;
-		cfg.width = 800;
+		cfg.width =800;
 		cfg.height = 480;
 		
-		new LwjglApplication(new MyGame(), cfg);
+		new LwjglApplication(new MyGame(new IReqHandler() {
+			
+			@Override
+			public void showFullAd(boolean show) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void showAd(boolean show) {
+				// TODO Auto-generated method stub
+				
+			}
+		}), cfg);
 	}
 }

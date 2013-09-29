@@ -10,18 +10,26 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
 public class FileManager {
-	FileHandle archivo;
+	public boolean Actualizar =false;
+	/*FileHandle archivo;
 	ByteArrayInputStream arrayInput;
 	ByteArrayOutputStream arrayOutput;
 	ObjectOutputStream objectOut;
-	ObjectInputStream objectInput;
+	ObjectInputStream objectInput;*/
 	byte [] datos;
 	
 	public FileManager() {
 		// TODO Auto-generated constructor stub
-		archivo = Gdx.files.local("file.bin");
+		
+		//archivo = Gdx.files.local(".FMorrocoy.bin");
+		
+		/*if(!archivo.exists()){
+			Actualizar = true;
+			archivo = Gdx.files.local("file.bin");
+		}*/
 	}
-
+	
+	/*
 	public Perfil_jugador leer(){
 		
 		if(archivo.exists()){
@@ -48,10 +56,15 @@ public class FileManager {
 		return null;
 	}
 	
+	public void borrarPerfilViejo(){
+		if(Actualizar)
+		Gdx.files.local("file.bin").delete();
+	}
 	
 	public void escribir(Perfil_jugador jugador){
 		
 		
+		archivo = Gdx.files.local(".FMorrocoy.bin");
 		
 		arrayOutput = new ByteArrayOutputStream();
 		try {
@@ -71,5 +84,16 @@ public class FileManager {
 		}
 		
 	}
-
+*/
+	
+	
+	public Perfil_jugador leer(){
+		return null;
+	}
+	public void borrarPerfilViejo(){
+		//if(Actualizar)
+		//Gdx.files.local("file.bin").delete();
+	}
+	public void escribir(Perfil_jugador jugador){
+		}
 }

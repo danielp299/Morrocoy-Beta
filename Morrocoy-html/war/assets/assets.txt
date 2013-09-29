@@ -1,0 +1,13 @@
+d:war/
+a:book_of_the_monkey.lite.mp3
+a:completo.mp3
+d:data
+b:data/empaquetado.atlas
+i:data/empaquetado.png
+i:data/empaquetado2.png
+i:data/empaquetado3.png
+i:data/empaquetado4.png
+a:empujar.mp3
+a:golpe.mp3
+a:menu.mp3
+t:roboto.fnt

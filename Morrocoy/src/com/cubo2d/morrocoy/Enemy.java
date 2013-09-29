@@ -13,11 +13,8 @@ public class Enemy extends Actor {
 	private Rectangle bounds = new Rectangle();
 	float stateTime;
 	
-	
-	
-	
 	public Enemy(float x, float y, float max, float min) {
-		setWidth(Assets.escala*2);
+		setWidth(Assets.escala+Assets.escala/2);
 		setHeight(Assets.escala);
 		setPosition(x, y - getHeight()/2);
 
@@ -37,6 +34,7 @@ public class Enemy extends Actor {
 	public void act(float delta){
 		super.act(delta);
 		updateBounds();
+		stateTime+= Gdx.graphics.getDeltaTime();
 	}
 	
 
@@ -44,7 +42,7 @@ public class Enemy extends Actor {
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);		
 		//batch.draw(Assets.car, getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), getHeight(), 1, 1, getRotation());
-		stateTime+= Gdx.graphics.getDeltaTime();
+		
 		batch.draw(Assets.conejoCamina.getKeyFrame(stateTime), getX(), getY(), getWidth()/2, getHeight()/2, getWidth(), getHeight(), 1, 1, getRotation());
 		
 	}

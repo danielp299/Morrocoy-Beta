@@ -32,7 +32,7 @@ public class Bonus extends Enemy{
 	}
 	
 	public void draw(SpriteBatch batch, float parentAlpha) {
-		batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a);		
+		batch.setColor(new Color(1f, 1f, 1f,getColor().a));	
 		if(tipo == 0){
 
 			if(esActivo){
@@ -63,20 +63,17 @@ public class Bonus extends Enemy{
 		
 		stateTime = st;
 	}
-
 	
 	public void crash(int posicion) {
 		clearActions();
 		index = posicion;
 		//addAction(fadeOut(1f));
-		if (posicion == 0) addAction(sequence(parallel(rotateBy(-720, 1f), moveTo(0, 0,1f))));
-		if (posicion == 1) addAction(sequence(parallel(rotateBy(720, 1f), moveTo(Assets.bonus_boton.getRegionWidth() , 0,1f) )));
-		if (posicion == 2) addAction(sequence(parallel(rotateBy(720, 1f), moveTo(Assets.bonus_boton.getRegionWidth() *2, 0,1f))));
+		if (posicion == 0) addAction(sequence(parallel(rotateBy(-720, 1f), moveTo(Gdx.graphics.getWidth() -Assets.escala, 0,1f))));
+		if (posicion == 1) addAction(sequence(parallel(rotateBy(720, 1f), moveTo(Gdx.graphics.getWidth() -Assets.escala*2, 0,1f) )));
+		if (posicion == 2) addAction(sequence(parallel(rotateBy(720, 1f), moveTo(Gdx.graphics.getWidth() -Assets.escala*3, 0,1f))));
 		if (posicion > 2) {addAction(sequence(parallel(rotateBy(-720, 1f), moveTo(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),1f),fadeOut(0.8f)), removeActor()));
 		}
 		}
-
-	
 	
 	public int getindex(){
 		return index;
@@ -89,15 +86,13 @@ public class Bonus extends Enemy{
 			}else if(tipo == 1){
 				} else if(tipo == 2){
 				}
-		addAction(fadeOut(5f));
-		addAction(sequence(scaleBy(200, 200, 5f),visible(false)));
+		addAction(fadeOut(4f));
+		addAction(sequence(scaleBy(200, 200, 4f),visible(false)));
 	}
 	
 	public void ActivarBonus(){
 		esActivo = true;
 	}
-	
-	
 	
 	public void BonusPasivo(){
 		if(tipo == 0){

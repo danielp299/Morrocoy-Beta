@@ -1,27 +1,54 @@
 package com.cubo2d.morrocoy;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Preferences;
 
 public class MyGame extends Game {
-	public final static int WIDTH = 800;
-	public final static int HEIGHT =480;
-	private GameScreen gameScreen;
+	public GameScreen gameScreen;
 	public Perfil_jugador jugador = null;
 	public FileManager Archivos;
+	Preferences config;
+	public Idioma idioma;
 	private Menu menuScrean;
+
+	//pisadas o musica
+	public static IReqHandler ExternalHandler;
+	
+	public MyGame(IReqHandler irh) {
+		// TODO Auto-generated constructor stub
+		MyGame.ExternalHandler = irh;
+		MyGame.ExternalHandler.showAd(true);
+		
+	}
+	
+	public MyGame() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void create() {
 		Assets.load();
 		Archivos = new FileManager();
-		jugador = Archivos.leer();
-		if(jugador == null){
-			jugador= new Perfil_jugador();
-		}else{
-			System.out.println("Nombre: "+jugador.nombre);
+		Perfil_jugador tmp;
+		tmp = Archivos.leer();
+		if(Archivos.Actualizar){
+			jugador = new Perfil_jugador();
+			jugador.actualizarPerfilv2(tmp);
 		}
 		
-		//gameScreen = new GameScreen(this);
+		if(tmp == null){
+			jugador= new Perfil_jugador();
+		}else{
+			if(Archivos.Actualizar){
+				jugador = new Perfil_jugador();
+				jugador.actualizarPerfilv2(tmp);
+			}else{
+			jugador = tmp;
+		}
+		}
+		
+		idioma = new Idioma(jugador.idioma);
+		
 		menuScrean = new Menu(this);
 		setScreen(gameScreen);
 		setScreen(menuScrean);
@@ -31,6 +58,18 @@ public class MyGame extends Game {
 	public void dispose() {
 		Archivos.escribir(jugador);
 		Assets.dispose();
+		//gameScreen.dispose();
+		menuScrean.dispose();
+		if(Archivos.Actualizar){
+			Archivos.borrarPerfilViejo();
+		}
+	}
+	
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		super.pause();
+		Archivos.escribir(jugador);
 	}
 	
 	public void jugar(int _nivel){
@@ -39,8 +78,12 @@ public class MyGame extends Game {
 	}
 	
 	public void menu(){
+		menuScrean.verificarBloqueo(menuScrean.zona);
+		menuScrean.ocultarMenuNiveles();
 		setScreen(menuScrean);
 		
 	}
 	
 }
+
+
